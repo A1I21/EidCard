@@ -20,7 +20,7 @@
  <script>
  document.getElementById('generateBtn').onclick = function() {
      var name = document.getElementById('name').value;
-     var imageUrl = 'https://i.ibb.co/ZWSDmhQ/card.png'; 
+     var imageUrl = 'https://i.ibb.co/qgn64bH/3.png'; 
      renderImageWithText(name, imageUrl);
  }
  
@@ -39,7 +39,7 @@
         ctx.fillStyle = '#1c3f60'; 
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
-        ctx.fillText(text, 300, 1000);
+        ctx.fillText(text, 290, 920);
 
         canvas.toBlob(function(blob) {
             const newImgUrl = URL.createObjectURL(blob);
