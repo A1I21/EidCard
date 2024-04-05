@@ -12,7 +12,7 @@
      <h1 style="text-align: center;">معايده علي</h1>
      <div class="controls">
        <label class="controls__label" for="name">Overlay Text</label>
-       <input class="controls__input" id="name" type="text" value="أهنئكم" placeholder="Enter text here"/>
+       <input class="controls__input" id="name" type="text" value="علي الحربي" placeholder="Enter text here"/>
      </div>
      <button id="generateBtn">Generate Image</button>
    </div>
@@ -20,34 +20,31 @@
  <script>
  document.getElementById('generateBtn').onclick = function() {
      var name = document.getElementById('name').value;
-     var imageUrl = 'https://i.ibb.co/ZWSDmhQ/card.png'; // Replace this with your image URL
+     var imageUrl = 'https://i.ibb.co/ZWSDmhQ/card.png'; 
      renderImageWithText(name, imageUrl);
  }
  
  function renderImageWithText(text, imageUrl) {
      var imgElement = document.createElement('img');
-     imgElement.crossOrigin = 'anonymous'; // Add crossOrigin attribute
+     imgElement.crossOrigin = 'anonymous'; 
      imgElement.src = imageUrl;
  
-     // Wait for the image to load
      imgElement.onload = function() {
          var canvas = document.createElement('canvas');
          var ctx = canvas.getContext('2d');
          canvas.width = imgElement.width;
          canvas.height = imgElement.height;
          ctx.drawImage(imgElement, 0, 0);
-         ctx.font = '30px myFirstFont';
+         ctx.font = '40px myFirstFont';
         ctx.fillStyle = '#1c3f60'; 
         ctx.textAlign = "center";
-        ctx.fillText(text, 280, 978);
+        ctx.textBaseline = "middle";
+        ctx.fillText(text, 300, 1000);
 
- 
-         // Convert canvas to data URL
-         var dataURL = canvas.toDataURL();
- 
-         // Create a new window and set its content to the image
-         var newWindow = window.open("", "_blank");
-         newWindow.document.write("<img src='" + dataURL + "' alt='Generated Image'>");
+        canvas.toBlob(function(blob) {
+            const newImgUrl = URL.createObjectURL(blob);
+            window.location.href = newImgUrl;
+        });
      };
  }
  </script>
